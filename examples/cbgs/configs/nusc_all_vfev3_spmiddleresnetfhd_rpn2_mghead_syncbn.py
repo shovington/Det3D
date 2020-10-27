@@ -7,12 +7,13 @@ from det3d.utils.config_tool import get_downsample_factor
 norm_cfg = None
 
 tasks = [
-    dict(num_class=1, class_names=["car"]),
-    dict(num_class=2, class_names=["truck", "construction_vehicle"]),
-    dict(num_class=2, class_names=["bus", "trailer"]),
-    dict(num_class=1, class_names=["barrier"]),
-    dict(num_class=2, class_names=["motorcycle", "bicycle"]),
+    # dict(num_class=1, class_names=["car"]),
+    # dict(num_class=2, class_names=["truck", "construction_vehicle"]),
+    # dict(num_class=2, class_names=["bus", "trailer"]),
+    # dict(num_class=1, class_names=["barrier"]),
+    # dict(num_class=2, class_names=["motorcycle", "bicycle"]),
     dict(num_class=2, class_names=["pedestrian", "traffic_cone"]),
+    # dict(num_class=2, class_names=["pedestrian"]),
 ]
 
 class_names = list(itertools.chain(*[t["class_names"] for t in tasks]))
@@ -21,86 +22,86 @@ class_names = list(itertools.chain(*[t["class_names"] for t in tasks]))
 target_assigner = dict(
     type="iou",
     anchor_generators=[
-        dict(
-            type="anchor_generator_range",
-            sizes=[1.97, 4.63, 1.74],
-            anchor_ranges=[-51.2, -51.2, -0.95, 51.2, 51.2, -0.95],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.6,
-            unmatched_threshold=0.45,
-            class_name="car",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[2.51, 6.93, 2.84],
-            anchor_ranges=[-51.2, -51.2, -0.40, 51.2, 51.2, -0.40],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.55,
-            unmatched_threshold=0.4,
-            class_name="truck",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[2.85, 6.37, 3.19],
-            anchor_ranges=[-51.2, -51.2, -0.225, 51.2, 51.2, -0.225],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.5,
-            unmatched_threshold=0.35,
-            class_name="construction_vehicle",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[2.94, 10.5, 3.47],
-            anchor_ranges=[-51.2, -51.2, -0.085, 51.2, 51.2, -0.085],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.55,
-            unmatched_threshold=0.4,
-            class_name="bus",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[2.90, 12.29, 3.87],
-            anchor_ranges=[-51.2, -51.2, 0.115, 51.2, 51.2, 0.115],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.5,
-            unmatched_threshold=0.35,
-            class_name="trailer",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[2.53, 0.50, 0.98],
-            anchor_ranges=[-51.2, -51.2, -1.33, 51.2, 51.2, -1.33],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.55,
-            unmatched_threshold=0.4,
-            class_name="barrier",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[0.77, 2.11, 1.47],
-            anchor_ranges=[-51.2, -51.2, -1.085, 51.2, 51.2, -1.085],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.5,
-            unmatched_threshold=0.3,
-            class_name="motorcycle",
-        ),
-        dict(
-            type="anchor_generator_range",
-            sizes=[0.60, 1.70, 1.28],
-            anchor_ranges=[-51.2, -51.2, -1.18, 51.2, 51.2, -1.18],
-            rotations=[0, 1.57],
-            velocities=[0, 0],
-            matched_threshold=0.5,
-            unmatched_threshold=0.35,
-            class_name="bicycle",
-        ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[1.97, 4.63, 1.74],
+        #     anchor_ranges=[-51.2, -51.2, -0.95, 51.2, 51.2, -0.95],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.6,
+        #     unmatched_threshold=0.45,
+        #     class_name="car",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[2.51, 6.93, 2.84],
+        #     anchor_ranges=[-51.2, -51.2, -0.40, 51.2, 51.2, -0.40],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.55,
+        #     unmatched_threshold=0.4,
+        #     class_name="truck",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[2.85, 6.37, 3.19],
+        #     anchor_ranges=[-51.2, -51.2, -0.225, 51.2, 51.2, -0.225],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.5,
+        #     unmatched_threshold=0.35,
+        #     class_name="construction_vehicle",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[2.94, 10.5, 3.47],
+        #     anchor_ranges=[-51.2, -51.2, -0.085, 51.2, 51.2, -0.085],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.55,
+        #     unmatched_threshold=0.4,
+        #     class_name="bus",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[2.90, 12.29, 3.87],
+        #     anchor_ranges=[-51.2, -51.2, 0.115, 51.2, 51.2, 0.115],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.5,
+        #     unmatched_threshold=0.35,
+        #     class_name="trailer",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[2.53, 0.50, 0.98],
+        #     anchor_ranges=[-51.2, -51.2, -1.33, 51.2, 51.2, -1.33],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.55,
+        #     unmatched_threshold=0.4,
+        #     class_name="barrier",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[0.77, 2.11, 1.47],
+        #     anchor_ranges=[-51.2, -51.2, -1.085, 51.2, 51.2, -1.085],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.5,
+        #     unmatched_threshold=0.3,
+        #     class_name="motorcycle",
+        # ),
+        # dict(
+        #     type="anchor_generator_range",
+        #     sizes=[0.60, 1.70, 1.28],
+        #     anchor_ranges=[-51.2, -51.2, -1.18, 51.2, 51.2, -1.18],
+        #     rotations=[0, 1.57],
+        #     velocities=[0, 0],
+        #     matched_threshold=0.5,
+        #     unmatched_threshold=0.35,
+        #     class_name="bicycle",
+        # ),
         dict(
             type="anchor_generator_range",
             sizes=[0.67, 0.73, 1.77],
@@ -208,12 +209,11 @@ test_cfg = dict(
 # dataset settings
 dataset_type = "NuScenesDataset"
 nsweeps = 10
-data_root = "data/nuScenes"
-
+data_root = "/home/system762020/Det3D/Det3D/det3d/datasets/nuscenes/trainval"
 db_sampler = dict(
     type="GT-AUG",
     enable=False,
-    db_info_path="data/nuScenes/dbinfos_train_10sweeps_withvelo.pkl",
+    db_info_path="/home/system762020/Det3D/Det3D/det3d/datasets/nuscenes/trainval/dbinfos_train_10sweeps_withvelo.pkl",
     sample_groups=[
         dict(car=2),
         dict(truck=3),
@@ -296,12 +296,12 @@ test_pipeline = [
     dict(type="Reformat"),
 ]
 
-train_anno = "data/nuScenes/infos_train_10sweeps_withvelo_filter_True.pkl"
-val_anno = "data/nuScenes/infos_val_10sweeps_withvelo_filter_True.pkl"
+train_anno = "/home/system762020/Det3D/Det3D/det3d/datasets/nuscenes/trainval/infos_train_10sweeps_withvelo.pkl"
+val_anno = "/home/system762020/Det3D/Det3D/det3d/datasets/nuscenes/trainval/infos_val_10sweeps_withvelo.pkl"
 test_anno = None
 
 data = dict(
-    samples_per_gpu=4,
+    samples_per_gpu=1,
     workers_per_gpu=8,
     train=dict(
         type=dataset_type,
@@ -359,7 +359,7 @@ log_config = dict(
 # yapf:enable
 # runtime settings
 total_epochs = 20
-device_ids = range(8)
+device_ids = range(1)
 dist_params = dict(backend="nccl", init_method="env://")
 log_level = "INFO"
 work_dir = './work_dirs/{}/'.format(__file__[__file__.rfind('/') + 1:-3])
