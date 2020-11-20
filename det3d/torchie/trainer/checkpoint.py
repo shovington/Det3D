@@ -47,6 +47,11 @@ def load_state_dict(module, state_dict, strict=False, logger=None):
 
     own_state = module.state_dict()
     for name, param in state_dict.items():
+        if name == "bbox_head.tasks.1.conv_box.weight" or name == "bbox_head.tasks.1.conv_box.bias" or name == "bbox_head.tasks.1.conv_cls.weight" or name == "bbox_head.tasks.1.conv_cls.bias":
+            continue
+
+        if name == "bbox_head.tasks.5.conv_box.weight" or name == "bbox_head.tasks.5.conv_box.bias" or name == "bbox_head.tasks.5.conv_cls.weight" or name == "bbox_head.tasks.5.conv_cls.bias":
+            name = name.replace("5", "1")
         if name not in own_state:
             unexpected_keys.append(name)
             continue
@@ -57,7 +62,6 @@ def load_state_dict(module, state_dict, strict=False, logger=None):
             shape_mismatch_pairs.append([name, own_state[name].size(), param.size()])
             continue
         own_state[name].copy_(param)
-
     all_missing_keys = set(own_state.keys()) - set(state_dict.keys())
     # ignore "num_batches_tracked" of BN layers
     missing_keys = [key for key in all_missing_keys if "num_batches_tracked" not in key]
